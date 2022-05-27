@@ -65,9 +65,9 @@
 				<!-- product-status -->
 				<div class="pf-product-status-wrap">
 					<span>상품 상태</span><br>
-					<label><input type="radio" name="0" value="미개봉">미개봉</label>
-					<label><input type="radio" name="1" value="거의 새 것">거의 새 것</label>
-					<label><input type="radio" name="2" value="사용감 있음">사용감 있음</label>
+					<label><input type="radio" name="productStatus" value="0">미개봉</label>
+					<label><input type="radio" name="productStatus" value="1">거의 새 것</label>
+					<label><input type="radio" name="productStatus" value="2">사용감 있음</label>
 				</div>
 				
 				<!-- text-area -->

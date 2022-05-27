@@ -26,7 +26,8 @@
 	div.title{
 		border: 0px solid red;
 		height: 80px;
-		box-shadow: 0px 1px 3px gray;
+		opacity: 95%;
+		/* box-shadow: 0px 1px 3px gray; */
 		position: fixed;
 		left: 0;
 		right: 0;

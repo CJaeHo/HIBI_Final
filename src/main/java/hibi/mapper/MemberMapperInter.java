@@ -19,7 +19,9 @@ public interface MemberMapperInter {
 //	public void deleteMember(String num);
 //	public void updateChu(Map<String, Integer>map);
 //	public int getTotalCount();	
-
+	
+//session에서 얻은 아이디로 userIdx 얻고, 얻은 userIdx로 product테이블에 정보 삽입
+	public Long getUserIdx (String loginid); //이거 하고나서 14행 insertProduct 호출
 	}
 	
 

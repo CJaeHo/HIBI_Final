@@ -11,9 +11,9 @@ import lombok.Data;
 @Alias("imageProduct")
 @Data
 public class ImageProductDto {
-	private int imageIdx;
-	private String image;
-	private int productIdx;
+	private Long imageIdx;
+	private String imageName;
+	private Long productIdx;
 	private int firstImage;
 
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone="Asia/seoul")

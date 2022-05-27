@@ -14,4 +14,15 @@
 		select * from Product where productIdx=#{productIdx}
 	</select>
 	
+
+	
+	<!-- userIdx로 productIdx구하기 / ArrayList에 담기 -->
+	<select id="getProductIdx" parameterType="Long" resultType="ArrayList">
+		select productIdx from Product where userIdx=#{userIdx}
+	</select>
+	
+	<insert id="insertImageProduct" parameterType="imageProduct">
+		insert into imageProduct (imageName, productIdx, firstImage) 
+		values (#{imageName},#{productIdx},#{firstImage})
+	</insert>
 </mapper>
