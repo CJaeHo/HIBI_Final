@@ -90,7 +90,7 @@
    			<div class="category-content"> 		
 	   			<div class="catcontent">
 		   			<a href="detail?productIdx=${dto.productIdx}">
-		   				<img class="cimg" src="/image/${dto.firstImage}.jpg"><br>
+		   				<img class="cimg" src="../save/${dto.firstImage}"><br>
 		   				<b class="content_title">${dto.productTitle}</b><br>
 		   				<span class="content_read">댓글수 ${dto.account}</span>
 		   			</a>

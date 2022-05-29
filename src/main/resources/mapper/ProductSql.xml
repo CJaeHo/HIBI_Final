@@ -36,7 +36,7 @@
 	</update>
 	
 	<!-- 대표사진 얻어오기 -->
-	<select id="getFirstImage" parameterType="Long">
+	<select id="getFirstImage" parameterType="Long" resultType="String">
 		select productPhotos from Product where productIdx=#{productIdx}
 	</select>
 	
@@ -46,7 +46,7 @@
 	</update>
 	
 	<!-- getList -->
-	<select id="getList" parameterType="Map" resultType="board">
+	<select id="getList" parameterType="Map" resultType="product">
 		select * from Product order by reg desc, restep asc limit #{start}, #{perpage}
 	</select>
 </mapper>
