@@ -32,12 +32,7 @@ public class CategoryController {
 	@Autowired
 	private ProductService service;
 
-	@GetMapping("/elecdevices")
-	public ModelAndView elec(
-			@RequestParam(defaultValue = "1") int currentPage
-			)
-	{
-		ModelAndView mview=new ModelAndView();
+	public ModelAndView repeatA(ModelAndView mview, int currentPage, String rtadress, Long categoryIdx){
 		//페이징 처리
 		int totalCount;//총 갯수
 		int perPage=16; //한페이지당 보여질 글의 갯수
@@ -50,46 +45,28 @@ public class CategoryController {
 		
 		//총 글의 갯수를 구한다
 		totalCount=service.getTotalCount();
-		
-		//총 페이지수를 구한다
 		totalPage=totalCount/perPage+(totalCount%perPage==0?0:1);
-		
-		//totalPage=(int)Math.ceil((double)totalCount/perPage); //무조건 올
-		//각 블럭의 시작페이지
-		//1,6,11....(currentpage가 1~5일때는 1,  6~10 일때는 6)
-		
-		startPage=(currentPage-1)/perBlock*perBlock+1; //if 현재페이지가 5 // (5-1)/5x5+1 
-		
-		//5,10,15....(currentpage가 1~5일때는 5,  6~10 일때는 10)
-		
+		startPage=(currentPage-1)/perBlock*perBlock+1;
 		endPage=startPage+perBlock-1;
 		
-		//문제점(마지막 블럭은 총페이지수까지만 나와야 한다)
-		
 		if(endPage>totalPage) {
-			
 			endPage=totalPage;
 		}
-		
-		//각 페이지에서 보여질 글의 시작번호(mysql은 0부터 오라클은 1부터임)
-		//예)한페이지당 3개일경우 1페이지:0, 2페이지:3, 3페이지 :6....
 		startNum=(currentPage-1)*perPage;
-		
-		//각페이지당 보여질 시작번호
 		no=totalCount-(currentPage-1)*perPage;
-		
+
+		Long startNum1 = startNum + 0L;
+		Long perPage1 = perPage + 0L;
+
 		//데이타 가져오기
-		List<ProductDto> list=service.getList(startNum, perPage);
+		List<ProductDto> list=service.getList(startNum1, perPage1, categoryIdx);
 		
 		//각 데이타에 id를 이용해서 이름 넣어주기
-		for(ProductDto dto:list)
-		{
-			
+		for(ProductDto dto:list) {
 			String id=dto.getLoginId();
 			String name=memberMapper.getSearchName(id);
 			dto.setName(name);
 
-			
 			//댓글 갯수 acount에 넣기
             int account=answerMapper.getAnswerList(dto.getProductIdx()).size();
             dto.setAccount(account);
@@ -99,7 +76,6 @@ public class CategoryController {
             dto.setFirstImage(firstImage);
 		}
 		
-		
 		mview.addObject("currentPage",currentPage);
 		mview.addObject("totalCount",totalCount);
 		mview.addObject("totalPage",totalPage);
@@ -107,50 +83,90 @@ public class CategoryController {
 		mview.addObject("endPage",endPage);
 		mview.addObject("no",no);
 		mview.addObject("list",list);
-		
-		mview.setViewName("/sub/category/elecdevices");
+
+		rtadress = "/sub/category"+rtadress;
+		mview.setViewName(rtadress);
+		return mview;
+	}
+
+	@GetMapping("/elecdevices")
+	public ModelAndView elec(
+			@RequestParam(defaultValue = "1") int currentPage,
+			@RequestParam(defaultValue = "1") Long categoryIdx
+			)
+	{
+		ModelAndView mview=new ModelAndView();
+		mview = repeatA(mview, currentPage, "/elecdevices", categoryIdx);
 		return mview;
 	}
 	
 	@GetMapping("/living")
-	public String living()
+	public ModelAndView living(
+		@RequestParam(defaultValue = "1") int currentPage,
+		@RequestParam(defaultValue = "2") Long categoryIdx)
 	{
-		return "/sub/category/living";
+		ModelAndView mview=new ModelAndView();
+		mview = repeatA(mview, currentPage, "/living", categoryIdx);
+		return mview;
 	}
 	
 	@GetMapping("/hobby")
-	public String hobby()
+	public ModelAndView hobby(
+		@RequestParam(defaultValue = "1") int currentPage,
+		@RequestParam(defaultValue = "3") Long categoryIdx)
 	{
-		return "/sub/category/hobby";
+		ModelAndView mview=new ModelAndView();
+		mview = repeatA(mview, currentPage, "/hobby", categoryIdx);
+		return mview;
 	}
 	
 	@GetMapping("/fashion")
-	public String fashion()
+	public ModelAndView fashion(
+		@RequestParam(defaultValue = "1") int currentPage,
+		@RequestParam(defaultValue = "4") Long categoryIdx)
 	{
-		return "/sub/category/fashion";
+		ModelAndView mview=new ModelAndView();
+		mview = repeatA(mview, currentPage, "/fashion", categoryIdx);
+		return mview;
 	}
 	
 	@GetMapping("/pet")
-	public String pet()
+	public ModelAndView pet(
+		@RequestParam(defaultValue = "1") int currentPage,
+		@RequestParam(defaultValue = "5") Long categoryIdx)
 	{
-		return "/sub/category/pet";
+		ModelAndView mview=new ModelAndView();
+		mview = repeatA(mview, currentPage, "/pet", categoryIdx);
+		return mview;
 	}
 	
 	@GetMapping("/beauty")
-	public String beauty()
+	public ModelAndView beauty(
+		@RequestParam(defaultValue = "1") int currentPage,
+		@RequestParam(defaultValue = "6") Long categoryIdx)
 	{
-		return "/sub/category/beauty";
+		ModelAndView mview=new ModelAndView();
+		mview = repeatA(mview, currentPage, "/beauty", categoryIdx);
+		return mview;
 	}
 	
 	@GetMapping("/food")
-	public String food()
+	public ModelAndView food(
+		@RequestParam(defaultValue = "1") int currentPage,
+		@RequestParam(defaultValue = "7") Long categoryIdx)
 	{
-		return "/sub/category/food";
+		ModelAndView mview=new ModelAndView();
+		mview = repeatA(mview, currentPage, "/food", categoryIdx);
+		return mview;
 	}
 	
 	@GetMapping("/talent")
-	public String talent()
+	public ModelAndView talent(
+		@RequestParam(defaultValue = "1") int currentPage,
+		@RequestParam(defaultValue = "8") Long categoryIdx)
 	{
-		return "/sub/category/talent";
+		ModelAndView mview=new ModelAndView();
+		mview = repeatA(mview, currentPage, "/talent", categoryIdx);
+		return mview;
 	}
 }

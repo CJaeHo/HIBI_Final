@@ -38,7 +38,7 @@
 <!-- 제품 페이지=============================================================-->
 	<definition name="productLayout" template="/WEB-INF/layout/productLayout.jsp">
 		<put-attribute name="header" value="/WEB-INF/main/title.jsp"/>
-		<put-attribute name="plcontent" value="/WEB-INF/product/productDetail.jsp"/>	
+		<!-- <put-attribute name="plcontent" value="/WEB-INF/product/productDetail.jsp"/>	 -->
 		<put-attribute name="footer" value="/WEB-INF/main/foot.jsp"/>
 	</definition>
 	<definition name="/pl/*/*" extends="productLayout">

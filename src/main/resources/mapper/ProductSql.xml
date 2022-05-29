@@ -12,8 +12,8 @@
 		update Product set productTitle=#{productTitle},productContent=#{productContent}
 		<if test="photos!=null">
 			,productPhotos=#{productPhotos}
-			where productIdx=#{productIdx}
 		</if>
+		 where productIdx=#{productIdx}
 	</update>
 	<delete id="deleteProduct" parameterType="Long">
 		delete from Product where productIdx=#{productIdx}
@@ -49,10 +49,15 @@
 	
 	<!-- getList -->
 	<select id="getList" parameterType="Map" resultType="product">
-		select * from Product order by reg desc, restep asc limit #{start}, #{perpage}
+		select * from Product where categoryIdx=#{categoryIdx} order by reg desc, restep asc limit #{start}, #{perpage}
 	</select>
 
 	<select id="getCategoryName" parameterType="Long" resultType="String">
 		select categoryName from Category where categoryIdx=#{categoryIdx}
+	</select>
+
+	<!-- 카테고리별 게시글 수 구하기 -->
+	<select id="">
+
 	</select>
 </mapper>

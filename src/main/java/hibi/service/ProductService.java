@@ -55,11 +55,12 @@ public class ProductService implements ProductServiceInter {
 	}
 
 	@Override
-	public List<ProductDto> getList(int start, int perpage) {
+	public List<ProductDto> getList(Long start, Long perpage, Long categoryIdx) {
 		// TODO Auto-generated method stub
-		Map<String, Integer> map = new HashMap<>();
+		Map<String, Long> map = new HashMap<>();
 		map.put("start", start);
 		map.put("perpage", perpage);
+		map.put("categoryIdx", categoryIdx);
 		return productMapper.getList(map);
 	}
 

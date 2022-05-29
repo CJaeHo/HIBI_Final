@@ -105,12 +105,12 @@
 				
    			 <c:if test="${sessionScope.loginok!=null}">   
   				&nbsp;&nbsp;
-        	<b>(${sessionScope.loginname})</b>	
+        	<span style="color:#a2a2a2">${sessionScope.loginname}님 hi!</span>	
         		 &nbsp;&nbsp;
         
        		<a href="mypage/" class="logo">
-				<img src="/image/KakaoTalk_Image_2022-05-24-17-10-41.png"
-				style="width: 50px; height: 40px">	
+				<img src="/image/profile2.svg"
+				style="width: 35px; height: 35px">	
 			</a>
         	
         	 <button type="button" class="btn btn-info" style="width: 100px; height: 40px; margin-top: 20px; margin-left: 10px;" 

@@ -13,7 +13,7 @@ public interface ProductServiceInter {
 
 	public void updateReStep(int reg, int restep);      // 변수 값 받아서 묶어서 보낼려고
 	public int getTotalCount();                        
-	public List<ProductDto> getList(int start, int perpage);
+	public List<ProductDto> getList(Long start, Long perpage, Long categoryIdx);
 	
 	public String getFirstImage(Long productIdx);
 	

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>제품 상세 페이지입니다람쥐🐿️</title>
+<title>제품 페이지입니다람쥐🐿️</title>
 <style type="text/css">
 .header{
 	height: 80px;

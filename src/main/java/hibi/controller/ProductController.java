@@ -54,9 +54,9 @@ public class ProductController {
 		ProductDto dto = productMapper.getData(productIdx);
 		String name = memberMapper.getSearchName(dto.getLoginId());
 		dto.setName(name);
-
+				System.out.println("name="+dto.getName());
 		String categoryName = productMapper.getCategoryName(dto.getCategoryIdx());
-		String userAddress = memberMapper.getSearchName(dto.getLoginId());
+		String userAddress = memberMapper.getUserAddress(dto.getLoginId());
 
 		mview.addObject("dto",dto);
 		mview.addObject("currentPage", currentPage);
@@ -134,9 +134,7 @@ public class ProductController {
 	@GetMapping("/updateform")
 	public ModelAndView updateForm(
 			@RequestParam Long productIdx,
-			@RequestParam int currentPage,
-			@RequestParam ArrayList<MultipartFile> upload,
-			HttpServletRequest request
+			@RequestParam int currentPage
 			) {
 		ModelAndView mview = new ModelAndView();
 		ProductDto dto = productMapper.getData(productIdx);
@@ -184,7 +182,7 @@ public class ProductController {
 		// db update
 		productMapper.updateProduct(dto);
 
-		return "redirect: ../";
+		return "redirect:detail?currentPage="+currentPage+"&productIdx="+dto.getProductIdx();
 	}
 	
 	@GetMapping("/delete")
@@ -193,13 +191,9 @@ public class ProductController {
 			@RequestParam int currentPage,
 			HttpServletRequest request
 			) {
-		
-		//save폴더의 위치 구하기
 		String path=request.getServletContext().getRealPath("/save");
-		//일단 save 폴더의 파일 삭제
 		String photos=productMapper.getData(productIdx).getProductPhotos();
 		if(!photos.equals("no")) {
-			
 			String []fileName=photos.split(",");
 			for(String f:fileName) {
 				File file=new File(path+"//"+f);
@@ -211,7 +205,7 @@ public class ProductController {
 		//db에서 데이타 삭제
 		productMapper.deleteProduct(productIdx);
 		
-		return "redirect:../";
+		return "redirect:../category/elecdevices";
 	}
 	
 

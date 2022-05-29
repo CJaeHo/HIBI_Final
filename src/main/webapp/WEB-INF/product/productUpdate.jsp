@@ -38,6 +38,7 @@
 				<!-- header -->
 				<div class="pf-header"><!-- flex, fustify-con:space-between, margin-top:50px, width:940px, border-bottom:1px solid #89 -->
 					<p class="pf-post-title">중고거래 글쓰기</p>
+					<button class="pf-header-btn" type="submit" onclick="history.back()">취소</button>
 					<button class="pf-header-btn" type="submit" >등록</button>
 				</div>
 				
@@ -58,7 +59,7 @@
 				</div>
 				<input type="hidden" id="category-v" name="categoryIdx" value="${dto.categoryIdx}">
 				<script type="text/javascript">
-					
+					$(".pf-category").val(${dto.categoryIdx}).prop("selected",true);
 					$(".pf-category").change(function(){
 						$("#category-v").val(this.value)
 					});
@@ -78,6 +79,7 @@
 					<input type="hidden" id="ps" name="productStatus" value="${dto.productStatus}">
 				</div>
 				<script type="text/javascript">
+					$('input[value="${dto.productStatus}"]').prop("checked",true);
 					$("#ps").val($("input[name=productStatus-radio]:checked").val())
 				</script>
 				

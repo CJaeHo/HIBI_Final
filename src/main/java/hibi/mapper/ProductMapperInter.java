@@ -19,7 +19,7 @@ public interface ProductMapperInter {
 	public ProductDto getData(Long productIdx);
 	
 	//리스트로 전체 데이터 가져오기- 카테고리
-	public List<ProductDto> getList(Map<String, Integer> map);
+	public List<ProductDto> getList(Map<String, Long> map);
 	
 	//게시물에 보여줄 데이터들
 	

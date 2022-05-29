@@ -175,6 +175,11 @@
 	color:#868e96;
 }
 
+.comments-buttons-wrap{
+	display: flex;
+	flex-direction: column;
+    justify-content: space-between;
+}
 
 /*댓글*/
 .article-comment{

@@ -118,61 +118,64 @@
 								${dto.productContent}
 							</p>
 						</div>
-						<p id="article-counts"> 관심 ${dto.productLikeCount} ∙ 채팅 ${dto.chatCount} ∙ 조회 ${dto.productLookupCount} </p>
+						<p id="article-counts"> 관심 ${dto.productLikeCount} ∙ 채팅 0 ∙ 조회 ${dto.productLookupCount} </p>
 					</section>
 				</article>
-				
-				<!-- 댓글 -->
-				<div class="article-comment">
-					<ul class="article-comment-list-ul"><!-- list-style: none; -->
-						<li class="article-comment-list"><!-- height:79px, flex  -->
-							<a class="comment-anchor"><!-- flex:center -->
-								<!-- 사진 -->
-								<div class="comment-product-image-wrap">
-									<img class="comment-product-image" alt="" src="/image/test7.jpg"><!-- 79px, border:1px solid #, border-radius 10px -->
-								</div>		
-										
-								<!-- 내용 -->
-								<div class="comment-preview"><!-- flex, column -->
-									<div class="preview-title">
-										거래하고 싶어요!
+				<div class="comments-buttons-wrap">
+					<!-- 댓글 -->
+					<div class="article-comment">
+						<ul class="article-comment-list-ul"><!-- list-style: none; -->
+							<li class="article-comment-list"><!-- height:79px, flex  -->
+								<a class="comment-anchor"><!-- flex:center -->
+									<!-- 사진 -->
+									<div class="comment-product-image-wrap">
+										<img class="comment-product-image" alt="" src="/image/test7.jpg"><!-- 79px, border:1px solid #, border-radius 10px -->
+									</div>		
+											
+									<!-- 내용 -->
+									<div class="comment-preview"><!-- flex, column -->
+										<div class="preview-title">
+											거래하고 싶어요!
+										</div>
+										<div class="preview-explanation-wrap"><!-- flex, column, 멀리 -->
+											<div class="preview-category"><!-- 위로 붙이기 -->
+												패션 ∙ <time>6시간 전</time>
+											</div>
+											<div class="preview-status"><!-- 가운데 정렬 -->
+												미개봉이에요!
+											</div>
+										</div>
 									</div>
-									<div class="preview-explanation-wrap"><!-- flex, column, 멀리 -->
-										<div class="preview-category"><!-- 위로 붙이기 -->
-											패션
-										</div>
-										<div class="preview-status"><!-- 가운데 정렬 -->
-											미개봉이에요!
-										</div>
+								</a>
+								<div class="comment-time-buttons"><!-- flex, column -->
+									<p></p><!-- flex, 오른쪽 정렬 -->
+									<button type="button" class="btn btn-info trade"><!-- submit으로? -->
+										거래하기
+									</button>
+									<div class="comment-heart-etc"><!-- flex, 오른쪽 정렬 -->
+										<a>
+											<img alt="" src="/image/heart-empty.svg"><!-- 15px -->
+										</a>
+										<a>
+											<img alt="" src="/image/3-vertical-dots.svg">
+										</a>
 									</div>
 								</div>
+							</li>
+						</ul>
+						
+						<!-- 댓글 남기기 -->
+						<div class="comment-btn-wrap"><!-- flex, height:65px, min-height:65px, align-items:center, align-content:center  -->
+							<a class="btn-open-popup">
+								댓글 남기기
 							</a>
-							<div class="comment-time-buttons"><!-- flex, column -->
-								<p><time>6시간 전</time></p><!-- flex, 오른쪽 정렬 -->
-								<button type="button" class="btn btn-info trade"><!-- submit으로? -->
-									거래하기
-								</button>
-								<div class="comment-heart-etc"><!-- flex, 오른쪽 정렬 -->
-									<a>
-										<img alt="" src="/image/heart-empty.svg"><!-- 15px -->
-									</a>
-									<a>
-										<img alt="" src="/image/3-vertical-dots.svg">
-									</a>
-								</div>
-							</div>
-						</li>
-					</ul>
-					
-					<!-- 댓글 남기기 -->
-					<div class="comment-btn-wrap"><!-- flex, height:65px, min-height:65px, align-items:center, align-content:center  -->
-						<a class="btn-open-popup">
-							댓글 남기기
-						</a>
+						</div>
 					</div>
-					<button type="button" class="btn btn-success" style="width:100px;" onclick="location.href='updateform'">수정하기</button>
-					<button type="button" class="btn btn-success" style="width:100px;" onclick="location.href='form'">글쓰기</button>
-					<button type="button" class="btn btn-danger" style="width:100px;" onclick="location.href='delete'">삭제하기</button>
+					<div class="buttons-wrap">
+						<button type="button" class="btn btn-success" style="width:100px;" onclick="location.href='updateform?productIdx=${dto.productIdx}&currentPage=${currentPage}'">수정하기</button>
+						<button type="button" class="btn btn-success" style="width:100px;" onclick="location.href='form'">글쓰기</button>
+						<button type="button" class="btn btn-danger" style="width:100px;" onclick="location.href='delete?productIdx=${dto.productIdx}&currentPage=${currentPage}'">삭제하기</button>
+					</div>
 				</div>
 			</div>
 			<!-- 다른 게시물 -->
@@ -183,55 +186,34 @@
 	</div>
 			
 	<!-- modal -->
+	<c:if test="${sessionScope.loginok!=null}">
+		<form id="afrm" action="">
 			<div class="pd_modal">
+				<!--hidden-->
+				<input type="hidden" name="productIdx" value="${dto.productIdx}">
+				<input type="hidden" name="loginId" value="${sessionScope.loginid}">
+				<input type="hidden" name="name" value="${sessionScope.loginname}">
 		      <div class="pd_modal_body">
 		      <div class="pd_modal_post_select">
 		      	<!--회원이 올린 게시물(product) 가져오기 -->
 		      	<form class="pd_modal_form"><!-- flex, column, , padding 10px auto,  -->
 		      		<ul class="pd_modal_user_post"><!-- flex, row, wrap, between-space -->
-		      			<li class="pd_user_post"><!-- width:107, height:107px -->
+						<!-- width:107, height:107px-->
+		      			<!-- <li class="pd_user_post">
 							<img alt="" src="/image/test.jpg">
 							<div>
 								<span>물건명</span>
 								<span>상태</span>
-							</div><!-- absolute,  -->
-						</li>
-		      			<li class="pd_user_post">
-		      				<img alt="" src="/image/test2.jpg">
-							<div>
-								<span>물건명</span>
-								<p>상태</p>
-							</div><!-- absolute,  -->
-		      			</li>
-		      			<li class="pd_user_post">
-		      				<img alt="" src="/image/test3.jpg">
-							<div>
-								<span>물건명</span>
-								<p>상태</p>
-							</div><!-- absolute,  -->
-		      			</li>
-		      			<li class="pd_user_post">
-		      				<img alt="" src="/image/test4.jpg">
-							<div>
-								<span>물건명</span>
-								<p>상태</p>
-							</div><!-- absolute,  -->
-		      			</li>
-		      			<li class="pd_user_post">
-		      				<img alt="" src="/image/test5.jpg">
-							<div>
-								<span>물건명</span>
-								<p>상태</p>
-							</div><!-- absolute,  -->
-		      			</li>
+							</div>
+						</li> -->
 		      		</ul>
-		      		<textarea>
-		      		</textarea>
+		      		<!-- <textarea>
+		      		</textarea> -->
 		      		<div class="pd_select_btn_wrap">
-		      			<button type="submit" style="width:100px; height:40px; background-color:yellow;">
+		      			<button type="submit" style="width:100px; height:40px; background-color:rgb(255, 255, 137);">
 		      				댓글 달기
 		      			</button>
-		      			<button type="button" class="btn btn-danger" style="width:100px; height:40px;">취소</button>
+		      			<button type="button" class="btn btn-danger cancelbtn" style="width:100px; height:40px;">취소</button>
 		      		</div>
 		      	</form>
 		    	<!-- <button class="btn-open-popup">Modal 띄우기</button> -->
@@ -243,32 +225,37 @@
 		      </div> -->
 		      
 		    </div>
+		</form>
+	</c:if>
+			
     
     <!-- 모달쓰 콜링 -->
     <script>
     //제공한 선택자 
-      const body = document.querySelector('body');
-      const modal = document.querySelector('.pd_modal');
-      const btnOpenPopup = document.querySelector('.btn-open-popup');
+		const body = document.querySelector('body');
+		const modal = document.querySelector('.pd_modal');
+		const btnOpenPopup = document.querySelector('.btn-open-popup');
+		const cancelbtn = document.querySelector('.cancelbtn');
 
-      btnOpenPopup.addEventListener('click', () => {
-        modal.classList.toggle('show');
+		btnOpenPopup.addEventListener('click', () => {
+			modal.classList.toggle('show');
 
-        if (modal.classList.contains('show')) {
-          body.style.overflow = 'hidden';
-        }
-      });
+			if (modal.classList.contains('show')) {
+			body.style.overflow = 'hidden';
+			}
+		});
 
-      modal.addEventListener('click', (event) => {
-        if (event.target === modal) {
-          modal.classList.toggle('show');
+		modal.addEventListener('click', (event) => {
+			if (event.target === modal) {
+			modal.classList.toggle('show');
 
-          if (!modal.classList.contains('show')) {
-            body.style.overflow = 'auto';
-          }
-        }
-      });  /**/
+			if (!modal.classList.contains('show')) {
+				body.style.overflow = 'auto';
+			}
+			}
+		});  /**/
       
+
       
      
     </script>
