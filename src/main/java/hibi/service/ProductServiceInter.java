@@ -1,22 +1,22 @@
 package hibi.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import hibi.dto.ImageProductDto;
+
+/*import hibi.dto.ImageProductDto;*/
 import hibi.dto.ProductDto;
 
 public interface ProductServiceInter {
 	//게시물 작성시 테이블에 등록
 	public void insertProduct (ProductDto dto);
+
+	public void updateReStep(int reg, int restep);      // 변수 값 받아서 묶어서 보낼려고
+	public int getTotalCount();                        
+	public List<ProductDto> getList(int start, int perpage);
 	
-	//session에서 얻은 아이디로 userIdx 얻고, 얻은 userIdx로 product테이블에 정보 삽입
-	 //이거 하고나서 14행 insertProduct 호출
+	public String getFirstImage(Long productIdx);
 	
-	//loginId로 User 테이블에서 userIdx를 얻고
-	//userIdx로 Product 테이블에서 productIdx들 얻어서 arraylist에 넣고
-	//컨트롤러의 imgdto에 넣기
-	public ArrayList<String> getProductIdxs (String loginId);
+	//좋아요수
 	
-	//session에서 얻은 아이디로 imageProduct테이블에 정보 삽입
-	public void insertImageProduct(ImageProductDto dto);
 }

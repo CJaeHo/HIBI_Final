@@ -1,11 +1,14 @@
 package hibi.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import hibi.dto.ImageProductDto;
+/*import hibi.dto.ImageProductDto;*/
 import hibi.dto.ProductDto;
 import hibi.mapper.MemberMapperInter;
 import hibi.mapper.ProductMapperInter;
@@ -21,33 +24,62 @@ public class ProductService implements ProductServiceInter {
 	@Override
 	public void insertProduct(ProductDto dto) {
 		// TODO Auto-generated method stub
+		int reg = dto.getReg();
+		int restep = dto.getRestep();
+		int relevel = dto.getRelevel();
+		//Long productIdx = dto.getProductIdx();
+		
+		
+		System.out.println("dto :  " + dto);
+		
 		
 		productMapper.insertProduct(dto);
 	}
 
-
-
 	@Override
-	public void insertImageProduct(ImageProductDto dto) {
+	public void updateReStep(int reg, int restep) {
 		// TODO Auto-generated method stub
-		productMapper.insertImageProduct(dto);
+		 System.out.println(reg+","+restep);
+	      // TODO Auto-generated method stub
+	      Map<String, Integer> map=new HashMap<>();
+	      map.put("reg", reg);         // map에 put을 이용해서 값 넣기.. 
+	      // 여기서 "reg","restep"은 BoardServiceInter.java 파일에서 적었던 변수 그대로 적어야 에러안남
+	      map.put("restep", restep);     // map에 put을 이용해서 값 넣기
+	      productMapper.updateReStep(map);      // mapper로 보내기
 	}
 
-
-	//loginId로 User 테이블에서 userIdx를 얻고
-	//userIdx로 Product 테이블에서 productIdx들 얻어서 arraylist에 넣고
-	//컨트롤러의 imgdto에 넣기
 	@Override
-	public ArrayList<String> getProductIdxs(String loginId) {
+	public int getTotalCount() {
 		// TODO Auto-generated method stub
-		
-		Long userIdx = memberMapper.getUserIdx(loginId);
-		
-		
-		ArrayList<String> productIdxs = new ArrayList<String>();
-//		productIdxs = add()
-		
-		return null;
+		return 0;
 	}
 
+	@Override
+	public List<ProductDto> getList(int start, int perpage) {
+		// TODO Auto-generated method stub
+		Map<String, Integer> map = new HashMap<>();
+		map.put("start", start);
+		map.put("perpage", perpage);
+		return productMapper.getList(map);
+	}
+
+	@Override
+	public String getFirstImage(Long productIdx) {
+		// TODO Auto-generated method stub
+		String photos[] = productMapper.getFirstImage(productIdx).split(",");
+		String firstphoto = photos[0];
+		return firstphoto;
+	}
+	
+	
 }
+
+
+
+
+
+
+
+
+
+

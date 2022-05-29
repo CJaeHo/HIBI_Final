@@ -10,7 +10,7 @@ import hibi.dto.CommentDto;
 public interface AnswerMapperInter {
 
 	public void insertAnswer(CommentDto dto);
-	public List<CommentDto> getAnswerList(int num);
+	public List<CommentDto> getAnswerList(Long productIdx);
 	public void deleteAnswer(int idx);
 	
 

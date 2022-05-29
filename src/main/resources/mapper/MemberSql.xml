@@ -22,19 +22,12 @@
 	</select>
 	
 	<select id="getSearchName" parameterType="String" resultType="String">
-		select loginId from User where loginId=#{id}	
+		select loginId from User where loginId=#{loginId}	
 	</select>
   
   		<!-- 아이디 찾기 -->
-
-
+  		
 	<select id="userfind" parameterType="String" resultType="String">
 		select ifnull(loginId, 0) from User where nickName=#{nickName} and userEmail=#{userEmail}
-
 	</select>
-		<!-- loginid로 userIdx 찾기 -->
-	<select id="getUserIdx" parameterType="String" resultType="Long">
-		select userIdx from User where loginId=#{loginId}
-	</select>
-
 </mapper>
