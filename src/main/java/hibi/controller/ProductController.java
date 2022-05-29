@@ -42,77 +42,26 @@ public class ProductController {
 	@Autowired
 	private ProductService service;
 
-	@GetMapping("/list")
-	public ModelAndView list(
-		@RequestParam(defaultValue = "1") int currentPage
-		)
-	{
-		ModelAndView mview=new ModelAndView();
-		//페이징 처리
-		int totalCount;//총 갯수
-		int perPage=5; //한페이지당 보여질 글의 갯수
-		int perBlock=5; //한블럭 보여질 페이지수 
-		int totalPage; //총페이지수
-		int startNum; // 한페이지에서 보여질 시작 글번호
-		int startPage; // 한블럭에서 보여질 시작 페이지 번호
-		int endPage; //한블럭에서 보여질 끝 페이지 번호
-		int no; //각 페이지당 보여질 시작번호
-		
-		totalCount=service.getTotalCount();
-		totalPage=totalCount/perPage+(totalCount%perPage==0?0:1);
-		startPage=(currentPage-1)/perBlock*perBlock+1;
-		endPage=startPage+perBlock-1;
-		if(endPage>totalPage) {
-			endPage=totalPage;
-		}
-		
-		startNum=(currentPage-1)*perPage;
-		
-		//각페이지당 보여질 시작번호
-		no=totalCount-(currentPage-1)*perPage;
-		
-		//데이타 가져오기
-		List<ProductDto> list=service.getList(startNum, perPage);
-		
-		//각 데이타에 id를 이용해서 이름 넣어주기
-		for(ProductDto dto:list)
-		{
-			
-			String id=dto.getLoginId();
-			String name=memberMapper.getSearchName(id);
-			dto.setName(name);
-
-			
-			//댓글 갯수 acount에 넣기
-//            int acount=answerMapper.getAnswerList(dto.getNum()).size();
-//            dto.setAcount(acount);
-		}
-		
-		mview.addObject("currentPage",currentPage);
-		mview.addObject("totalCount",totalCount);
-		mview.addObject("totalPage",totalPage);
-		mview.addObject("startPage",startPage);
-		mview.addObject("endPage",endPage);
-		mview.addObject("no",no);
-		mview.addObject("list",list);
-		
-		mview.setViewName("/board/boardlist");
-		return mview;
-		
-	}
 
 	// 게시물 페이지
 	@GetMapping("/detail")
 	public ModelAndView detail(
 			@RequestParam Long productIdx,
-			@RequestParam String categorynum) {
+			@RequestParam String currentPage) {
 		ModelAndView mview = new ModelAndView();
 		
 		productMapper.updateLookupCount(productIdx);
 		ProductDto dto = productMapper.getData(productIdx);
 		String name = memberMapper.getSearchName(dto.getLoginId());
 		dto.setName(name);
-		
+
+		String categoryName = productMapper.getCategoryName(dto.getCategoryIdx());
+		String userAddress = memberMapper.getSearchName(dto.getLoginId());
+
+		mview.addObject("dto",dto);
+		mview.addObject("currentPage", currentPage);
+		mview.addObject("categoryName", categoryName);
+		mview.addObject("userAddress", userAddress);
 		mview.setViewName("/pl/product/productDetail");
 		return mview;
 	}
@@ -120,24 +69,25 @@ public class ProductController {
 //form & insert
 	// 게시물 작성
 	@GetMapping("/form")
-	public ModelAndView form(@RequestParam Map<String, String> map) {
+	public ModelAndView form(
+		@RequestParam Map<String, String> map) {
 
 		ModelAndView mview = new ModelAndView();
 		//답글일 경우 읽어야할 5개의 값 (새글일 경우는 값이 안넘어오므로 모두 null이다)
 		String currentPage=map.get("currentPage");
-		String num=map.get("num");
+		String productIdx=map.get("productIdx");
 		String reg=map.get("reg");
 		String restep=map.get("restep");
 		String relevel=map.get("relevel");
 			
 		mview.addObject("currentPage",currentPage==null?"1":currentPage);
-		mview.addObject("num",num==null?"0":num);
+		mview.addObject("productIdx",productIdx==null?"0":productIdx);
 		mview.addObject("reg",reg==null?"0":reg);
 		mview.addObject("restep",restep==null?"0":restep);
 		mview.addObject("relevel",relevel==null?"0":relevel);
 		
 		
-		mview.setViewName("/board/boardform");
+		mview.setViewName("/pl/product/productForm");
 		return mview;
 	}
 

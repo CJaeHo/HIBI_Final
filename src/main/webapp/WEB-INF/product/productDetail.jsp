@@ -79,8 +79,8 @@
 											<img alt="" src="/image/test6.jpg">
 										</div>
 										<div id="article-profile-nickname">
-											<div id="nickname"><!-- ${productdto.nickName} --></div>
-											<div id="region-name"><!-- ${productdto.userAddress} --></div>
+											<div id="nickname">${dto.name}</div>
+											<div id="region-name">${userAddress}</div>
 										</div>
 									</div>
 								</a>
@@ -107,18 +107,18 @@
 							</div>
 					</section>
 					<section id="article-description"><!-- margin, padding -->
-						<h1 id="article-title" style="margin-top:0px"><%-- ${productdto.productTitle} --%></h1>
+						<h1 id="article-title" style="margin-top:0px">${dto.productTitle}</h1>
 						<p id="article-category">
-							<%-- ${productdto.categoryName} --%> ∙
-	          				<time> <!-- $.{productdto.updateAt} --></time>
+							${categoryName} ∙
+	          				<time> ${dto.updateAt}</time>
 						</p>
 						<p id="article-price"></p>
 						<div id="article-detail">
 							<p>
-								<%-- ${productdto.productContent} --%>
+								${dto.productContent}
 							</p>
 						</div>
-						<p id="article-counts"> 관심 <%-- ${productdto.productLikeCount} --%> ∙ 채팅 <%-- ${productdto.chatCount} --%> ∙ 조회 <%-- ${productdto.productLookupCount} --%> </p>
+						<p id="article-counts"> 관심 ${dto.productLikeCount} ∙ 채팅 ${dto.chatCount} ∙ 조회 ${dto.productLookupCount} </p>
 					</section>
 				</article>
 				

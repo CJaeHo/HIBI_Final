@@ -30,4 +30,6 @@ public interface ProductMapperInter {
 	public void updateLookupCount(Long productIdx);
 	
 	public String getFirstImage(Long productIdx);
+
+	public String getCategoryName(Long categoryIdx);
 }

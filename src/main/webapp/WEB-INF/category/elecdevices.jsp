@@ -89,7 +89,7 @@
    		<c:forEach var="dto" items="${list}">  
    			<div class="category-content"> 		
 	   			<div class="catcontent">
-		   			<a href="detail?productIdx=${dto.productIdx}">
+		   			<a href="../product/detail?productIdx=${dto.productIdx}&currentPage=${currentPage}">
 		   				<img class="cimg" src="../save/${dto.firstImage}"><br>
 		   				<b class="content_title">${dto.productTitle}</b><br>
 		   				<span class="content_read">댓글수 ${dto.account}</span>

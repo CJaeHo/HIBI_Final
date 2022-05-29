@@ -30,4 +30,9 @@
 	<select id="userfind" parameterType="String" resultType="String">
 		select ifnull(loginId, 0) from User where nickName=#{nickName} and userEmail=#{userEmail}
 	</select>
+
+	<!--사용자 주소 구하기-->
+	<select id="getUserAddress" parameterType="String" resultType="String">
+		select userAddress from User where loginId=#{loginId}
+	</select>
 </mapper>

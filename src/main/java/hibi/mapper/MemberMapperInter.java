@@ -20,6 +20,8 @@ public interface MemberMapperInter {
 //	public void deleteMember(String num);
 //	public void updateChu(Map<String, Integer>map);
 //	public int getTotalCount();	
+
+	public String getUserAddress(String loginId);
 	
 	
 	

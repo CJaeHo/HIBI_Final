@@ -4,9 +4,9 @@
 
 	<insert id="insertProduct" parameterType="product">
 		insert into Product (loginId, productTitle, productContent, saleStatus, productStatus, 
-		hidden, productLookupCount, productLikeCount, categoryIdx, productPhotos, firstImage) 
+		hidden, productLookupCount, productLikeCount, categoryIdx, productPhotos) 
 		values (#{loginId},#{productTitle},#{productContent},#{saleStatus},#{productStatus},
-		#{hidden},#{productLookupCount},#{productLikeCount},#{categoryIdx},#{productPhotos},#{firstImage})
+		#{hidden},#{productLookupCount},#{productLikeCount},#{categoryIdx},#{productPhotos})
 	</insert>
 	<update id="updateProduct" parameterType="Product">
 		update Product set productTitle=#{productTitle},productContent=#{productContent}
@@ -21,10 +21,12 @@
 	
 	
 	<!-- join해서 채팅 온 수(chatRoom, count(*), where productIdx),지역(user)  가져오기 -->
-	<select id="getData" parameterType="Long">
+
+	<!--게시물 데이터 가져오기-->
+	<select id="getData" parameterType="Long" resultType="product">
 		select * from Product where productIdx=#{productIdx}
 	</select>
-	<update id="updateReStep" parameterType="Map">
+	<update id="updateReStep" parameterType="Map" >
 		update Product set restep=restep+1 where reg=#{reg} and restep>#{restep}
 	</update>
 	<update id="updateLikeCount" parameterType="Map">
@@ -42,11 +44,15 @@
 	
 	<!-- 조회ㅜ -->
 	<update id="updateLookupCount" parameterType="Long">
-		update set Product productLookupCount=productLookupCount+1 where productIdx=#{productIdx}
+		update Product set productLookupCount=productLookupCount+1 where productIdx=#{productIdx}
 	</update>
 	
 	<!-- getList -->
 	<select id="getList" parameterType="Map" resultType="product">
 		select * from Product order by reg desc, restep asc limit #{start}, #{perpage}
+	</select>
+
+	<select id="getCategoryName" parameterType="Long" resultType="String">
+		select categoryName from Category where categoryIdx=#{categoryIdx}
 	</select>
 </mapper>
