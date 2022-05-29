@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+<!--메인======================================================================-->
+
+	<definition name="mainLayout" template="/WEB-INF/layout/mainLayout.jsp">
+		<put-attribute name="title" value="/WEB-INF/main/title.jsp"/>
+ 		<put-attribute name="banner" value="/WEB-INF/main/banner.jsp"/>
+ 		<put-attribute name="category" value="/WEB-INF/main/category.jsp"/>
+ 		<put-attribute name="contents" value="/WEB-INF/main/contents.jsp"/>
+ 		<put-attribute name="hibiimage" value="/WEB-INF/main/hibiimage.jsp"/>
+ 		<put-attribute name="foot" value="/WEB-INF/main/foot.jsp"/>
+		<!--  <put-attribute name="main" value="/WEB-INF/layout/main.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/layout/menu.jsp"/>  -->	
+	</definition>
+	
+	<!-- wild card -->
+	<definition name="/ml/*/*" extends="mainLayout">
+		<put-attribute name="contents" value="/WEB-INF/{1}/{2}.jsp"/>
+	</definition>
+	
+<!--카테고리=================================================================-->	
+	<definition name="categoryLayout" template="/WEB-INF/layout/categoryLayout.jsp">	
+		<put-attribute name="title" value="/WEB-INF/main/title.jsp"/>
+ 		<put-attribute name="category" value="/WEB-INF/main/category.jsp"/>
+ 		<put-attribute name="content" value="/WEB-INF/main/contents.jsp"/>
+ 		<put-attribute name="foot" value="/WEB-INF/main/foot.jsp"/>	
+	</definition>
+	
+	<!-- wild card -->
+	<definition name="/sub/*/*" extends="categoryLayout">
+		<put-attribute name="content" value="/WEB-INF/{1}/{2}.jsp"/>
+	</definition>
+	
+<!-- 제품 페이지=============================================================-->
+	<definition name="productLayout" template="/WEB-INF/layout/productLayout.jsp">
+		<put-attribute name="header" value="/WEB-INF/main/title.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/main/foot.jsp"/>
+	</definition>
+	<definition name="/pl/*/*" extends="productLayout">
+		<put-attribute name="plcontent" value="/WEB-INF/{1}/{2}.jsp"/>
+	</definition>
+	
+<!-- 마이 페이지=============================================================-->
+	<definition name="mypageLayout" template="/WEB-INF/layout/mypageLayout.jsp">
+		<put-attribute name="header2" value="/WEB-INF/main/title.jsp"/>
+		<put-attribute name="subheader" value="/WEB-INF/mypage/mypageMenu.jsp"/>		
+		<put-attribute name="subheader2" value="/WEB-INF/mypage/mypageMainInfo.jsp"/>		
+		<put-attribute name="content" value="/WEB-INF/layout/main.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/main/foot.jsp"/>
+	</definition>
+	
+	
+	<!-- wild card -->
+	<definition name="/sub3/*/*" extends="mypageLayout">
+		<put-attribute name="content" value="/WEB-INF/{1}/{2}.jsp"/>
+	</definition>
+<!-- 마이 페이지2=============================================================-->
+	<definition name="mypageLayout2" template="/WEB-INF/layout/mypageLayout2.jsp">
+		<put-attribute name="header3" value="/WEB-INF/main/title.jsp"/>
+		<put-attribute name="subheader3" value="/WEB-INF/mypage/mypageMenu.jsp"/>		
+		<put-attribute name="content" value="/WEB-INF/layout/main.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/main/foot.jsp"/>
+	</definition>
+	
+	<definition name="/sub4/*/*" extends="mypageLayout2">
+		<put-attribute name="content" value="/WEB-INF/{1}/{2}.jsp"/>
+	</definition>
+	
+<!-- 마이 페이지3=============================================================-->
+	<definition name="mypageLayout3" template="/WEB-INF/layout/mypageLayout3.jsp">
+		<put-attribute name="header4" value="/WEB-INF/main/title.jsp"/>		
+		<put-attribute name="content" value="/WEB-INF/layout/main.jsp"/>
+	</definition>
+	
+	<definition name="/sub5/*/*" extends="mypageLayout3">
+		<put-attribute name="content" value="/WEB-INF/{1}/{2}.jsp"/>
+	</definition>
+	
+<!-- qna================================================================= -->
+	
+	<definition name="qnaLayout" template="/WEB-INF/layout/qnaLayout.jsp">
+		<put-attribute name="title" value="/WEB-INF/main/title.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/qna/qnafnq.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/main/foot.jsp"/>
+	</definition>
+<!--  wild card  -->
+	
+	<definition name="/ql/*/*" extends="qnaLayout">
+		<put-attribute name="content" value="/WEB-INF/{1}/{2}.jsp"/>
+	</definition>	
+
+		
+</tiles-definitions>
+
+   

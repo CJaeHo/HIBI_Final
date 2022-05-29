@@ -1,0 +1,407 @@
+.body-wrap{
+    display: flex;
+    /*overflow-x: auto;
+    position: relative;
+    margin: 0 auto;
+    height: 100%;*/
+    justify-content: center;
+}
+.body{
+    display: flex;
+    margin: 0 auto;
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+}
+.post-comment-wrap{
+    display: flex;
+    margin-top: 30px;
+}
+.post{
+	width: 580px;
+    padding-bottom: 0;
+}
+#article-images{
+	/*position: relative;*/
+	width: 546px;
+	height:404px;
+	margin: 0 auto;
+}
+
+
+/*slider*/
+	/* 브라우저 마진과 패딩 리셋 */
+	* {margin:0;padding:0;}
+	
+
+	/* INPUT 가리기 */
+	.section [id*="slide"] {display:none;}
+	
+	/* 슬라이드 영역 - max-width 크기를 조절해주면 됩니다*/
+	.section .slidewrap {max-width:546px;max-height: 404px;margin:0 auto;overflow:hidden;position:relative;}
+	.section .slidelist {white-space:nowrap;font-size:0;}
+	.section .slidelist > li.slideli {display:inline-block;vertical-align:middle;width:100%;transition:all .5s;}
+	.section .slidelist > li.slideli > a {display:block;position:relative;}
+	
+	.section .slidelist > li.slideli > a img{
+		width:546px;
+		height: 404px;
+		border-radius: 8px;
+	}
+
+	/* 좌우로 넘기는 LABEL버튼에 대한 스타일 */
+	.section .slide-control {position:absolute;top:0;left:0;z-index:10;width:100%;height:100%;}
+	.section .slide-control label {position:absolute;z-index:1;top:50%;transform:translateY(-50%);padding:50px;cursor:pointer;}
+	.section .slide-control .left {left:30px;background:url('/image/left.png') center center / 100% no-repeat;}
+	.section .slide-control .right {right:30px;background:url('/image/right.png') center center / 100% no-repeat;}
+	.section .slide-control [class*="control"] {display:none;}
+
+	/* INPUT이 체크되면 변화값이 li까지 전달되는 스타일 */
+	.section [id="slide01"]:checked ~ .slidewrap .slidelist > li {transform:translateX(0%);}
+	.section [id="slide02"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-100%);}
+	.section [id="slide03"]:checked ~ .slidewrap .slidelist > li {transform:translateX(-200%);}
+	
+	/*  INPUT이 체크되면 변화값이 좌우 슬라이드 버튼을 담고 있는 div 까지 전달되는 스타일 */
+	.section [id="slide01"]:checked ~ .slidewrap .control01 {display:block;}
+	.section [id="slide02"]:checked ~ .slidewrap .control02 {display:block;}
+	.section [id="slide03"]:checked ~ .slidewrap .control03 {display:block;}
+
+
+/*�봽濡쒗븘*/
+
+#article-profile-buttons{
+    width: 546px;
+    margin: 0 auto;
+}
+#article-pb-wrap{
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+
+    margin-top: 25px;
+    padding-bottom: 23px;
+    position: relative;
+    border-bottom: 1px solid #e9ecef;
+}
+.article-pb{
+	display: flex;
+	align-items: center;
+}
+.article-pb a{
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+.article-pb a:hover{
+    text-decoration: none;
+}
+#article-profile-image{
+    display: inline-block;
+}
+#article-profile-nickname{
+    display: inline-block;
+    margin-left: 8px;
+}
+#article-profile-nickname #nickname{
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: -0.6px;
+    color: #212529;
+}
+#article-profile-nickname #region-name{
+    font-size: 13px;
+    line-height: 1.46;
+    letter-spacing: -0.6px;
+    color: #212529;
+}
+#article-profile-image img{
+    width: 40px;
+    height: 40px;
+    object-fit: cover; /**/
+	border: 1px solid rgba(0,0,0,.2);
+	border-radius: 50%;
+}
+#article-buttons-link{
+
+}
+#article-button-wrap{
+    display: flex;
+    justify-content: flex-end;
+}
+.article-buttons{
+    width: 20px;
+    color: #000000;
+    margin-right: 8px;
+}
+.article-buttons img{
+	width: 20px;
+	height: 20px;
+}
+
+#article-description{
+    padding: 32px 0;
+    width: 546px;
+    margin: 0 auto;
+    border-bottom: 1px solid #e9ecef;
+}
+#article-description #article-title{
+	font-size:20px;
+	font-weight: 600;
+	line-height: 1.5;
+	letter-spacing: -0.6px;
+}
+#article-description #article-category{
+	margin-top:4px;
+	font-size: 13px;
+	letter-spacing: -0.6px;
+	color: #868e96;
+}
+#article-description #article-detail{
+	margin-bottom:16px;
+	margin-top:8px;
+}
+#article-detail p{
+	font-size:17px;
+	line-height:1.6;
+	letter-spacing:-0.6px;
+	margin: 16px 0;
+	word-break: break-all;
+}
+#article-description #article-counts{
+	font-size: 13px;
+	line-height: 1.46;
+	letter-spacing:-0.6px;
+	color:#868e96;
+}
+
+
+/*댓글*/
+.article-comment{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 345px;
+    max-width: 345px;
+    /*border: 1px solid #e9ecef; */
+    justify-content: space-between;
+}
+/* ul */
+.article-comment-list-ul{
+	position: relative;
+	margin: 0px;
+	padding: 0px;
+	height: calc(100%-95px);
+	list-style: none;
+	overflow:hidden auto;
+}
+.article-comment ul li.article-comment-list{
+	display: flex;
+	/* height: 79px; */
+	/*width: 335px;*/
+	justify-content: space-between;
+	padding: 15px;
+	border-radius:10px;
+	/* border:1px solid #e9ecef;  */
+	box-shadow: 0 1px 1px 2px #e9ecef;
+}
+li.article-comment-list .comment-anchor{
+	display: flex;
+	text-decoration: none;
+	cursor: pointer;
+	height: 79px;
+	
+}
+.comment-anchor .comment-product-image-wrap{
+	width: 79px;
+	height: 79px;
+}
+.comment-product-image-wrap img.comment-product-image{
+	width: 79px;
+	height: 79px;
+	border: 0.5px solid #e9ecef;
+	border-radius: 10px;
+}
+.comment-preview{
+	display: flex;
+	flex-direction: column;
+	height: 79px;
+	margin-left: 8px;
+}
+.comment-preview .preview-title{/****************/
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: -0.6px;
+    color: #212529;
+}
+.preview-explanation-wrap{
+	display: flex;
+	flex-direction: column;
+	/*align-content: space-between;/*space-around*/
+	justify-content: space-between; 
+}
+.preview-explanation-wrap .preview-category{
+	font-size: 12px;
+	line-height: 2;
+	letter-spacing:-0.6px;
+	color:#868e96;
+}
+.preview-explanation-wrap .preview-status{
+	font-size: 13px;
+	font-weight: 300;
+	line-height: 2.5;
+	letter-spacing: -0.6px;
+	color: #969e96;
+}
+.comment-time-buttons{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	margin: 4px;
+}
+.comment-time-buttons p{
+	font-size: 13px;
+	letter-spacing: -0.6px;
+	color: #868e96;
+	margin-bottom: 4px;
+}
+.comment-time-button button.trade{
+	margin-bottom:4px;
+}
+.comment-heart-etc a img{
+	width: 15px;
+	height: 15px;
+	margin-left: 4px;
+}
+/*댓글남기기*/
+.comment-btn-wrap{
+	display: flex;
+	height:95px;
+	min-height:95px;
+	align-items: center;
+	align-content: center;
+}
+.comment-btn-wrap .btn-open-popup{
+	display: block;
+	align-items: center;
+	height: 55px;
+	width: 250px;
+	border-radius:23px;
+	background-color: skyblue;
+	margin: auto;
+	text-align: center;
+	line-height: 55px;
+	cursor: pointer;
+	color:white;
+	font-size: 20px;
+	font-weight: 550;
+	letter-spacing: -0.6px;
+}
+.comment-btn:hover{
+	text-decoration: none;
+}
+
+/*占쌕몌옙 占쌉시뱄옙*/
+#article-detail-hot-more{
+    width: 677px;
+    margin: 0 auto;
+    padding-top: 32px;
+    position: relative;
+}
+#article-detail-hot-more #hot-more-link{
+    position: absolute;
+    top:32px;
+    right: 0;
+    text-align: right;
+}
+
+/*modal*/
+.pd_modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: none;
+
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.pd_modal.show {
+  display: block;
+}
+
+.pd_modal_body {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 550px;
+  height: 600px;
+
+  padding: 40px;
+
+  text-align: center;
+
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+
+  transform: translateX(-50%) translateY(-50%);
+}
+.pd_modal_form{
+	display: flex;
+	flex-direction: column;
+	padding:10px auto;
+}
+.pd_modal_form textarea{
+	width:100%;
+	height:150px;
+	border-radius: 10px;
+}
+.pd_modal_user_post{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content:space-between;
+	list-style:none;
+	width: 470px;
+	height: 300px;
+}
+.pd_user_post{
+	cursor:pointer;
+	height:107px;
+}
+.pd_modal_user_post .pd_user_post div{
+	display: flex;
+	flex-direction: column;
+	
+	position: relative;
+	bottom:28px;
+	background-color: rgba( 255, 255, 255, 0.5 );
+}
+.pd_user_post div span{
+	font-size:10px;
+	font-weight:400px;
+	letter-spacing: -0.6px;
+}
+.pd_user_post div p{
+	font-size:8px;
+	letter-spacing: -0.6px;
+}
+
+.pd_modal_user_post .pd_user_post img{
+	width:107px;
+	height:107px;
+	border-radius: 10px;
+}
+.pd_select_btn_wrap{
+	padding-top:20px;
+	
+}
+.pd_select_btn_wrap button{
+	border-radius: 8px;
+	border:0px;
+}

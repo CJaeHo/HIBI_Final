@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hibi.mapper.MyPageMapperInter">
+	
+	<select id="getMemberData" parameterType="user">
+		select * from User where (userIdx, loginPassword, nickName, userPhoneNumber, userEmail, userPhoto, userAddress, socialStatus) values 
+		(#{userIdx}, #{loginPassword}, #{nickName}, #{userPhoneNumber}, #{userEmail}, #{userPhoto}, #{userAddress}, #{socialStatus})
+	</select>
+	
+	<select id="getLikeProductData" parameterType="likeProduct">
+		select * from likeProduct where (likeIdx,productIdx) values (#{likeIdx}, #{productIdx}) 
+	</select>
+	
+	<select id="getProductDtoData" parameterType="product">
+		select * from product where (productIdx, productTitle, productContent, updateAt) values (#{productIdx}, #{productTitle}, #{productContent}, now())
+	</select>
+
+	<select id="getCommentDtoData" parameterType="comment">
+		select * from comment where (commentIdx, commentTitle, userIdx, imageIdx, updateAt) values (#{commentIdx}, #{commentTitle}, #{productIdx}, #{userIdx}, #{imageIdx}, now())
+	</select>
+	
+	
+</mapper>

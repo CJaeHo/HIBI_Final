@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hibi.mapper.ProductMapperInter">
+
+	<insert id="insertProduct" parameterType="product">
+		insert into Product (productTitle, productContent, saleStaus, hidden, productLookupCount, productLikeCount, categoryIdx, userIdx,
+		 createAt, status) values (#{productTitle},#{productContent}, #{saleStaus}, 0, #{productLookupCount}, #{productLikeCount}, #{categoryIdx}, #{userIdx}, now(), 0)
+	</insert>
+	<delete id="deleteProduct" parameterType="int">
+		delete from Product where productIdx=#{productIdx}
+	</delete>
+	<!-- join해서 채팅 온 수(chatRoom, count(*), where productIdx),지역(user)  가져오기 -->
+	<select id="getData" parameterType="int">
+		select * from Product where productIdx=#{productIdx}
+	</select>
+	
+</mapper>
