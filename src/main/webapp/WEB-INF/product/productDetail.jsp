@@ -79,8 +79,8 @@
 											<img alt="" src="/image/test6.jpg">
 										</div>
 										<div id="article-profile-nickname">
-											<div id="nickname">${productdto.nickName}</div>
-											<div id="region-name">${productdto.userAddress}</div>
+											<div id="nickname"><!-- ${productdto.nickName} --></div>
+											<div id="region-name"><!-- ${productdto.userAddress} --></div>
 										</div>
 									</div>
 								</a>
@@ -107,18 +107,18 @@
 							</div>
 					</section>
 					<section id="article-description"><!-- margin, padding -->
-						<h1 id="article-title" style="margin-top:0px">${productdto.productTitle}</h1>
+						<h1 id="article-title" style="margin-top:0px"><%-- ${productdto.productTitle} --%></h1>
 						<p id="article-category">
-							${productdto.categoryName} ∙
-	          				<time> ${productdto.updateAt}</time>
+							<%-- ${productdto.categoryName} --%> ∙
+	          				<time> <!-- $.{productdto.updateAt} --></time>
 						</p>
 						<p id="article-price"></p>
 						<div id="article-detail">
 							<p>
-								${productdto.productContent}
+								<%-- ${productdto.productContent} --%>
 							</p>
 						</div>
-						<p id="article-counts"> 관심 ${productdto.productLikeCount} ∙ 채팅 ${productdto.chatCount} ∙ 조회 ${productdto.productLookupCount} </p>
+						<p id="article-counts"> 관심 <%-- ${productdto.productLikeCount} --%> ∙ 채팅 <%-- ${productdto.chatCount} --%> ∙ 조회 <%-- ${productdto.productLookupCount} --%> </p>
 					</section>
 				</article>
 				
@@ -170,7 +170,9 @@
 							댓글 남기기
 						</a>
 					</div>
+					<button type="button" class="btn btn-success" style="width:100px;" onclick="location.href='updateform'">수정하기</button>
 					<button type="button" class="btn btn-success" style="width:100px;" onclick="location.href='form'">글쓰기</button>
+					<button type="button" class="btn btn-danger" style="width:100px;" onclick="location.href='delete'">삭제하기</button>
 				</div>
 			</div>
 			<!-- 다른 게시물 -->
@@ -267,7 +269,7 @@
         }
       });  /**/
       
-      $("")
+      
      
     </script>
 </body>

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import hibi.dto.BoardDto;
+
 import hibi.dto.MemberDto;
 import hibi.dto.NaverMemberDto;
 
@@ -19,10 +19,13 @@ public interface MemberMapperInter {
 	public int login(Map<String, String>map);
 	public int naverlogin(Map<String, String> map);
 	
+	public String userfind(Map<String, String>map);
 //	public void deleteMember(String num);
 //	public void updateChu(Map<String, Integer>map);
 //	public int getTotalCount();	
-
+	
+	
+	
 	}
 	
 

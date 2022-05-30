@@ -299,7 +299,6 @@ span.myemail{
 	</a>
 	<h3 style="margin-left: 20px; ">우리동네 가장 트렌디한 물물교환</h3>
 	</div>
-	<c:if test="${sessionScope.loginstac == 'no'}">
 	<div class="wellcome">
 		<span class="myemail"></span>
 		<b>으로 가입하기</b>
@@ -347,12 +346,6 @@ span.myemail{
 				
 		</section>
 	</form>
-		</c:if>
-		<c:if test="${sessionScope.loginstac != 'no' }">
-			<div>
-				gg
-			</div>
-		</c:if>
 
 		<footer style="background: white; color: black; margin-top: 70px;">
 			<div class="copyright-wrap">

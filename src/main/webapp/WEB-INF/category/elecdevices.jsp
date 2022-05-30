@@ -11,7 +11,33 @@
 <script src="https://code.jquery.com/jquery-3.5.0.js"></script>   
 <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <style type="text/css">
+
+	.categoryimg{
+		display: flex;
+		width: 980px;
+		height: 200px;
+		margin: auto;
+	}
 	
+	.categoryimg table{
+		margin-left: 80px;
+	}
+	
+	.categoryimg img:hover{
+		margin: -15px 0px 0px -5px;
+	}
+	
+	.category-content-wrap{
+		display: flex;
+		width:980px;
+		flex-wrap: wrap;
+	}
+	.category-content{
+		display:flex;
+		width: 220px;
+		margin: 20px;
+	}
+	/*---------------------------*/
 	.cimg{
 		width: 220px;
 		height: 220px;
@@ -57,19 +83,23 @@
 </head>
 <body>
 	<h2 class="category_name">전자기기</h2>
-	<table>
-   		<tr>
-   			<c:forEach var="catimg" begin="1" end="13">   		
-	   			<td class="catcontent">
-	   				<img class="cimg" src="${root}/image/${catimg}.jpg"><br>
-	   				<b class="content_title">제목이들어간다아아</b><br>
-	   				<textarea class="content_read">길어지면 이상해짐문제있음</textarea>
-	   			</td>
-	   			<c:if test="${catimg%4==0}">
+
+	
+	<div class="category-content-wrap">
+   		<c:forEach var="dto" items="${list}">  
+   			<div class="category-content"> 		
+	   			<div class="catcontent">
+		   			<a href="detail?productIdx=${dto.productIdx}">
+		   				<img class="cimg" src="../save/${dto.firstImage}"><br>
+		   				<b class="content_title">${dto.productTitle}</b><br>
+		   				<span class="content_read">댓글수 ${dto.account}</span>
+		   			</a>
+	   			</div>
+   			</div>
+	   			<%-- <c:if test="${catimg%4==0}">
 	   				</tr><tr>
-	   			</c:if> 
- 			</c:forEach>
-   		</tr>
-   	</table>
+	   			</c:if>  --%>
+ 		</c:forEach>
+   	</div>
 </body>
 </html>

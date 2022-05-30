@@ -134,7 +134,8 @@ footer .copyright-wrap span{
 </head>
 <c:set var="root" value="<%=request.getContextPath()%>"/>
 <body>
-<div class="main-container">
+<form action="idpasswordfinddo" method="post" style="padding: auto;">	
+	<div class="main-container">
 	<h3 style="margin-left: 20px; Width:213px;  Top:189px; Left:615px; margin-top: 159px; margin-bottom: 20px; margi">아이디/비밀번호 찾기</h3>
 				
 		<div class="idfindcontainer" style=" margin:0px; border: 1px solid #DCDCDC; Width:298px; Height:350px; Top:238px; Left:567px; border-radius :10px;">
@@ -143,20 +144,20 @@ footer .copyright-wrap span{
 		</div>
 			<div class="login-input-wrap" style="margin-top: 26px;">	
 			
-				<input placeholder="본명" type="text" style="padding-left: 18px" ></input>
+				<input placeholder="본명" type="text" style="padding-left: 18px" name="nickName" id="nickName" ></input>
 			</div>
 			
 			<div class="login-input-wrap password-wrap" style="margin-bottom: 10px">	
-				<input placeholder="휴대폰번호" type="password" style="padding-left: 18px"></input>
+				<input placeholder="이메일주소" type="email" name="userEmail" id="nickName" style="padding-left: 18px"></input>
 			</div>
 			
 			<div style="Width:259px; Height:35px; Top:439px; Left:590px; font-size: iipx; line-height: 13.75px; margin-top: 20px; padding-left: 20px; text-align: center;">본인인증 받으실 정보를 입력해 주세요.<br>휴대폰 번호로 아이디(이메일 주소)를 <br>보내드립니다.</div>
-			<form style="padding: auto;">
-			
-			<input type="submit" value="아이디(이메일 주소)전송" style="color:white; Width:260px; Height:43px; Top:486px; Left:589px; border-raduis:5px; background: #8BD2F1; border: 1px solid #FFFFFF; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 5px; margin:40px 16px; 17px; 22px; ">
-			
+		
+		
+						
+			<input type="submit" value="아이디 찾기" style="color:white; Width:260px; Height:43px; Top:486px; Left:589px; border-raduis:5px; background: #8BD2F1; border: 1px solid #FFFFFF; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 5px; margin:40px 16px; 17px; 22px;">
 			</form>
-			
+	
 		</div>	
 
 

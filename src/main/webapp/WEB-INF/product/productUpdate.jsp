@@ -24,12 +24,12 @@
 </head>
 
 <body>
-	<%-- <c:if test="${sessionScope.loginok==null}">
+	<c:if test="${sessionScope.loginok==null}">
 		<script type="text/javascript">
 			alert("로그인을 해주세요.");
 			location.href="../../login";
 		</script>
-	</c:if> --%>
+	</c:if>
 	<div class="pf-body-wrap">
 		<form action="insert" method="post" enctype="multipart/form-data" onsubmit="return check()">
 			<input type="hidden" name="userIdx" value="${userIdx}">
@@ -56,8 +56,9 @@
 						<option value="8">재능교환</option>
 					</select>
 				</div>
-				<input type="hidden" id="category-v" name="categoryIdx" value="">
+				<input type="hidden" id="category-v" name="categoryIdx" value="${dto.categoryIdx}">
 				<script type="text/javascript">
+					
 					$(".pf-category").change(function(){
 						$("#category-v").val(this.value)
 					});
@@ -65,7 +66,7 @@
 				
 				<!-- product-name -->
 				<div class="pf-product-name"><!-- margin:20px -->
-					<input type="text" name="productTitle" placeholder="제목을 입력하세요" style="font-size: 15px;width:500px; height: 18px; border:0px; border-bottom:1px solid"><!-- div랑 라벨로 묶어서? -->
+					<input type="text" name="productTitle" value="${dto.productTitle}" style="font-size: 15px;width:500px; height: 18px; border:0px; border-bottom:1px solid"><!-- div랑 라벨로 묶어서? -->
 				</div>
 				
 				<!-- product-status -->
@@ -74,7 +75,7 @@
 					<label><input type="radio" name="productStatus-radio" value="미개봉">미개봉</label>
 					<label><input type="radio" name="productStatus-radio" value="거의 새 것">거의 새 것</label>
 					<label><input type="radio" name="productStatus-radio" value="사용감 있음">사용감 있음</label>
-					<input type="hidden" id="ps" name="productStatus" value="">
+					<input type="hidden" id="ps" name="productStatus" value="${dto.productStatus}">
 				</div>
 				<script type="text/javascript">
 					$("#ps").val($("input[name=productStatus-radio]:checked").val())
@@ -82,7 +83,7 @@
 				
 				<!-- text-area -->
 				<div class="pf-post-text-area">
-					<textarea name="productContent" required="required"></textarea>
+					<textarea name="productContent" required="required">${dto.productContent}</textarea>
 				</div>
 				
 				<!-- photo-area -->
@@ -92,7 +93,7 @@
 							<input type="file" name="upload" class="form-control"
 							multiple="multiple" 
 							style="color: #969e96;font-size: 10px; width:600px; height:79px; border-radius:8px; border: 1px solid #e9ecef; 
-							cursor:pointer; background-color:#e9ecef; text-align:center; line-height:79px;">사진 추가하기
+							cursor:pointer; background-color:#e9ecef; text-align:center; line-height:79px;">
 						</div>
 					</div>
 					<div class="pf-selected-photo"><!-- flex, justify-cont: spac-between, margin-left:10p, 사진이 가로 길이 넘어가면 슬라이드 또는 아래로 내려보내기 -->

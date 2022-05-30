@@ -25,6 +25,7 @@
 	<definition name="categoryLayout" template="/WEB-INF/layout/categoryLayout.jsp">	
 		<put-attribute name="title" value="/WEB-INF/main/title.jsp"/>
  		<put-attribute name="category" value="/WEB-INF/main/category.jsp"/>
+ 		<!-- <put-attribute name="cotegory" value="/WEB-INF/category/elecdevices.jsp"/> -->
  		<put-attribute name="content" value="/WEB-INF/main/contents.jsp"/>
  		<put-attribute name="foot" value="/WEB-INF/main/foot.jsp"/>	
 	</definition>
@@ -37,6 +38,7 @@
 <!-- 제품 페이지=============================================================-->
 	<definition name="productLayout" template="/WEB-INF/layout/productLayout.jsp">
 		<put-attribute name="header" value="/WEB-INF/main/title.jsp"/>
+		<put-attribute name="plcontent" value="/WEB-INF/product/productDetail.jsp"/>	
 		<put-attribute name="footer" value="/WEB-INF/main/foot.jsp"/>
 	</definition>
 	<definition name="/pl/*/*" extends="productLayout">
@@ -49,7 +51,6 @@
 		<put-attribute name="subheader" value="/WEB-INF/mypage/mypageMenu.jsp"/>		
 		<put-attribute name="subheader2" value="/WEB-INF/mypage/mypageMainInfo.jsp"/>		
 		<put-attribute name="content" value="/WEB-INF/layout/main.jsp"/>
-		<put-attribute name="footer" value="/WEB-INF/main/foot.jsp"/>
 	</definition>
 	
 	
