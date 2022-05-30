@@ -20,7 +20,10 @@
 
 	<select id="login" parameterType="Map" resultType="int">
 		select count(*) from User where loginId=#{id} and loginPassword=#{pass}
-		
+	</select>
+	
+	<select id="naverlogin" parameterType="Map" resultType="int">
+		select count(*) from User where userEmail=#{email} and loginId=#{id}
 	</select>
 	
 	<select id="getSearchName" parameterType="String" resultType="String">

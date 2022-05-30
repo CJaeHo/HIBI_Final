@@ -2,6 +2,8 @@
 <%@ page import="java.security.SecureRandom" %>
 <%@ page import="java.math.BigInteger" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -228,17 +230,45 @@ span.myemail{
 <script type="text/javascript">
   var naver_id_login = new naver_id_login("L_JLkR8lU8vY4v1VSTJo", "http://127.0.0.1:9001/login/naver/callback");
   // ì ê·¼ í í° ê° ì¶ë ¥
-  alert(naver_id_login.oauthParams.access_token);
+  // alert(naver_id_login.oauthParams.access_token);
   // ë¤ì´ë² ì¬ì©ì íë¡í ì¡°í
   naver_id_login.get_naver_userprofile("naverSignInCallback()");
   // ë¤ì´ë² ì¬ì©ì íë¡í ì¡°í ì´í íë¡í ì ë³´ë¥¼ ì²ë¦¬í  callback function
   function naverSignInCallback() {
-  //  alert(naver_id_login.getProfileData('email'));
-  //  alert(naver_id_login.getProfileData('nickname'));
-  //  alert(naver_id_login.getProfileData('age'));
-    $("span.myemail").text(naver_id_login.getProfileData('email'));
-    $("#userEmail").val(naver_id_login.getProfileData('email'));
+//    alert(naver_id_login.getProfileData('email'));
+//    alert(naver_id_login.getProfileData('nickname'));
+//    alert(naver_id_login.getProfileData('age'));
+	var email = naver_id_login.getProfileData('email');
+	var nickname = naver_id_login.getProfileData('nickname');
+	var id = "naver";
+    console.log(email);
+   	  
+    $("span.myemail").text(email);
+    $("#userEmail").val(email);
+
+        $.ajax({
+    	type:"get",
+    	dataType:"json",
+    	url:"/login/naver/callback2",
+    	data:{"email":email, "id":id},
+    	success:function(data){
+    		console.log(${sessionScope.loginok});
+    		console.log("data="+data);
+    		//alert(data);
+    		if(data==1)
+    			//history.go(-2);
+    			location.href="../../";
+    			
+    		
+    	}
+    })      
   }
+  
+  $(function(){
+	  
+	  
+  })
+  
   
   $(function(){
 		$("#nicknamecheck").click(function(){
@@ -269,7 +299,7 @@ span.myemail{
 	</a>
 	<h3 style="margin-left: 20px; ">우리동네 가장 트렌디한 물물교환</h3>
 	</div>
-	
+	<c:if test="${sessionScope.loginstac == 'no'}">
 	<div class="wellcome">
 		<span class="myemail"></span>
 		<b>으로 가입하기</b>
@@ -317,6 +347,12 @@ span.myemail{
 				
 		</section>
 	</form>
+		</c:if>
+		<c:if test="${sessionScope.loginstac != 'no' }">
+			<div>
+				gg
+			</div>
+		</c:if>
 
 		<footer style="background: white; color: black; margin-top: 70px;">
 			<div class="copyright-wrap">
@@ -326,6 +362,5 @@ span.myemail{
 		
 		</div>
 	
-</body>
 </body>
 </html>
