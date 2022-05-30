@@ -9,6 +9,7 @@
 
 <link rel="stylesheet" type="text/css" href="/css/chat_style.css">
 
+<%--스윗잭--%>
 <div class="inner">
     <div id="container" class="container">
         <input type="hidden" id="chatHistory" value="${chatHistory}">
