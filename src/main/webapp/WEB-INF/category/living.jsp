@@ -16,14 +16,12 @@
 </head>
 <body>
 	<h2 class="category_name">리빙/가구</h2>
-
-	
 	<div class="category-content-wrap">
    		<c:forEach var="dto" items="${list}">  
    			<div class="category-content"> 		
 	   			<div class="catcontent">
 		   			<a href="../product/detail?productIdx=${dto.productIdx}&currentPage=${currentPage}">
-		   				<img class="cimg" src="../save/${dto.firstImage}"><br>
+		   				<img class="cimg" src="../save/${dto.firstPhoto}"><br>
 		   				<b class="content_title">${dto.productTitle}</b><br>
 		   				<span class="content_read">댓글수 ${dto.account}</span>
 		   			</a>

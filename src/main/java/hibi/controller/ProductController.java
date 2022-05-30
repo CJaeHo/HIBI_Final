@@ -47,7 +47,7 @@ public class ProductController {
 	@GetMapping("/detail")
 	public ModelAndView detail(
 			@RequestParam Long productIdx,
-			@RequestParam String currentPage,
+			@RequestParam int currentPage,
 			HttpSession session
 			) {
 		ModelAndView mview = new ModelAndView();
@@ -100,8 +100,12 @@ public class ProductController {
 
 //게시물 data -> db에 등록
 	@PostMapping("/insert")
-	public String insertProduct(@ModelAttribute ProductDto pdto, @RequestParam ArrayList<MultipartFile> upload,
-			HttpSession session, HttpServletRequest request, RedirectAttributes redirectAttributes) {
+	public String insertProduct(
+		@ModelAttribute ProductDto pdto, 
+		@RequestParam int currentPage,
+		@RequestParam ArrayList<MultipartFile> upload,
+		HttpSession session, HttpServletRequest request, 
+		RedirectAttributes redirectAttributes) {
 		/* String referer = request.getHeader("Referer"); */
 		//
 		// @RequestParam String categoryPage,
@@ -141,7 +145,7 @@ public class ProductController {
 		service.insertProduct(pdto);
 
 		// category/categoryPage?"+categoryPage;
-		return "redirect:../"; // 메인으로
+		return "redirect:detail?currentPage="+currentPage; // 메인으로
 	}
 	
 	@GetMapping("/updateform")
@@ -174,22 +178,25 @@ public class ProductController {
 			dto.setProductPhotos("null");
 		} else {
 			FileUtil fileUtil = new FileUtil();
-			String photos = "";
-			for (MultipartFile f : upload) {
-				String rename = fileUtil.changeFileName(f.getOriginalFilename());
-				photos += rename + ",";
+			String productPhotos = "";
+			for (int i=0; i<upload.size(); i++) {
+				String rename = fileUtil.changeFileName(upload.get(i).getOriginalFilename());
+				productPhotos += rename + ",";
 				File file = new File(path + "//" + rename);
 				try {
-					f.transferTo(file);// save 폴더에 업로드됨
+					upload.get(i).transferTo(file);
 				} catch (IllegalStateException | IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+
+				// if(i==0){
+				// 	dto.setFirstPhoto(rename);
+				// }
 			}
-			// 마지막 컴마 제거
-			photos = photos.substring(0, photos.length() - 1);
-			System.out.println(photos);
-			dto.setProductPhotos(photos);
+			productPhotos = productPhotos.substring(0, productPhotos.length() - 1);
+			// 로그인아이디로
+			dto.setProductPhotos(productPhotos);
 		}
 
 		// db update

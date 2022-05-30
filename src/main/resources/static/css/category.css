@@ -40,6 +40,9 @@
     font-weight: bold;
     padding: 5px;
     margin: 0px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .content_read{

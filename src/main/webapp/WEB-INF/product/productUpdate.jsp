@@ -31,7 +31,7 @@
 		</script>
 	</c:if>
 	<div class="pf-body-wrap">
-		<form action="insert" method="post" enctype="multipart/form-data" onsubmit="return check()">
+		<form action="update" method="post" enctype="multipart/form-data" onsubmit="return check()">
 			<input type="hidden" name="userIdx" value="${userIdx}">
 			<div class="pf-body"><!-- flex,flex-derection:column, margin:0 auto, width:940px,height:100% -->
 				

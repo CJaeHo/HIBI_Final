@@ -8,8 +8,9 @@
 		values (#{loginId},#{productTitle},#{productContent},#{saleStatus},#{productStatus},
 		#{hidden},#{productLookupCount},#{productLikeCount},#{categoryIdx},#{productPhotos},#{firstPhoto})
 	</insert>
+	<!--productStatus, hidden 추가하기 / firstPhoto 수정-->
 	<update id="updateProduct" parameterType="Product">
-		update Product set productTitle=#{productTitle},productContent=#{productContent}
+		update Product set productTitle=#{productTitle},productContent=#{productContent},categoryIdx=#{categoryIdx},firstPhoto=#{firstPhoto} 
 		<if test="photos!=null">
 			,productPhotos=#{productPhotos}
 		</if>

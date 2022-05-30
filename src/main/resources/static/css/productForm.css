@@ -130,7 +130,31 @@
 	width:85px;
 	
 }
-
+.pf-photo-wrap .pf-photo-select div{
+  width:79px; 
+  height:79px; 
+  border-radius:8px; 
+  border: 1px solid #e9ecef; 
+	cursor:pointer; 
+  background-color:#f3f4f5;
+}
+.pf-photo-select div .form-control{
+  color: #969e96;
+  font-size: 10px; 
+  width:79px; 
+  height:79px; 
+  border-radius:8px; 
+  border: 1px solid #e9ecef; 
+	cursor:pointer; 
+  background-color:#e9ecef; 
+  text-align:center; 
+  line-height:79px;
+}
+.pf-photo-select div svg{
+  position: relative;
+  bottom: 60px;
+  left: 20px;
+}
 .pf-photo-wrap .pf-selected-photo{
 	display: flex;
 	justify-content: space-between;

@@ -383,7 +383,7 @@ li.article-comment-list .comment-anchor{
 .pd_modal_user_post{
 	display: flex;
 	flex-wrap: wrap;
-	justify-content:space-between;
+	/* justify-content:space-between; */
 	list-style:none;
 	width: 470px;
 	height: 470px;
@@ -391,6 +391,7 @@ li.article-comment-list .comment-anchor{
 .pd_user_post{
 	cursor:pointer;
 	height:107px;
+	margin: 0 10px 10px 0;
 }
 .pd_modal_user_post .pd_user_post div{
 	display: flex;
