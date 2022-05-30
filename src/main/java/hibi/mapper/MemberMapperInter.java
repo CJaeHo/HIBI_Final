@@ -16,6 +16,7 @@ public interface MemberMapperInter {
 	public String getSearchName(String id); 
 	public int login(Map<String, String>map);
 	
+	public String userfind(Map<String, String>map);
 //	public void deleteMember(String num);
 //	public void updateChu(Map<String, Integer>map);
 //	public int getTotalCount();	

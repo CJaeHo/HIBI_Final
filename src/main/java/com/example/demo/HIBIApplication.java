@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartResolver;
 @SpringBootApplication
 @ConfigurationPropertiesScan({"com.example.demo", "hibi.*"})
 @ComponentScan({"com.example.demo", "hibi.*"})
-@MapperScan({"data.*"})
+@MapperScan({"hibi.*"})
 public class HIBIApplication {
     @Bean
     public MultipartConfigElement multipartConfigElement() {
