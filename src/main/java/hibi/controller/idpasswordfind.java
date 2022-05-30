@@ -39,14 +39,14 @@ public class idpasswordfind {
 			Model model)
 	{
 		
-
+//dasdfdg
 		//로그인 성공여부 알기
 		Map<String, String> map=new HashMap<>();
 		map.put("nickName", nickName);
 		map.put("userEmail", userEmail);
 		String n=mapper.userfind(map);
 		if(n!=null) {
-			
+
 			model.addAttribute("myid", n);
 		
 			return	"/WEB-INF/login/idpasswordfinddo.jsp";
