@@ -15,7 +15,7 @@ public interface ProductServiceInter {
 	public int getTotalCount();                        
 	public List<ProductDto> getList(Long start, Long perpage, Long categoryIdx);
 	
-	public String getFirstImage(Long productIdx);
+	public String getFirstPhoto(Long commentIdx);
 	
 	//좋아요수
 	

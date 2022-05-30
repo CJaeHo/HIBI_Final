@@ -47,21 +47,28 @@ public class ProductController {
 	@GetMapping("/detail")
 	public ModelAndView detail(
 			@RequestParam Long productIdx,
-			@RequestParam String currentPage) {
+			@RequestParam String currentPage,
+			HttpSession session
+			) {
 		ModelAndView mview = new ModelAndView();
 		
 		productMapper.updateLookupCount(productIdx);
 		ProductDto dto = productMapper.getData(productIdx);
 		String name = memberMapper.getSearchName(dto.getLoginId());
 		dto.setName(name);
-				System.out.println("name="+dto.getName());
+		System.out.println("name="+dto.getName());
 		String categoryName = productMapper.getCategoryName(dto.getCategoryIdx());
 		String userAddress = memberMapper.getUserAddress(dto.getLoginId());
+
+		//유저 게시물 가져오기
+		String loginId = (String) session.getAttribute("loginid");
+		List<ProductDto> plist = productMapper.getUserProduct(loginId);
 
 		mview.addObject("dto",dto);
 		mview.addObject("currentPage", currentPage);
 		mview.addObject("categoryName", categoryName);
 		mview.addObject("userAddress", userAddress);
+		mview.addObject("plist", plist);
 		mview.setViewName("/pl/product/productDetail");
 		return mview;
 	}
@@ -102,6 +109,7 @@ public class ProductController {
 		String path = request.getServletContext().getRealPath("/save");
 		String loginId = (String) session.getAttribute("loginid");
 		pdto.setLoginId(loginId);
+		String firstPhoto;
 
 //파일명
 		if (upload.get(0).getOriginalFilename().equals("")) {
@@ -109,15 +117,20 @@ public class ProductController {
 		} else {
 			FileUtil fileUtil = new FileUtil();
 			String productPhotos = "";
-			for (MultipartFile f : upload) {
-				String rename = fileUtil.changeFileName(f.getOriginalFilename());
+			for (int i=0; i<upload.size(); i++) {
+				String rename = fileUtil.changeFileName(upload.get(i).getOriginalFilename());
 				productPhotos += rename + ",";
 				File file = new File(path + "//" + rename);
 				try {
-					f.transferTo(file);
+					upload.get(i).transferTo(file);
 				} catch (IllegalStateException | IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+				}
+
+				if(i==0){
+					firstPhoto = rename;
+					pdto.setFirstPhoto(rename);
 				}
 			}
 			productPhotos = productPhotos.substring(0, productPhotos.length() - 1);

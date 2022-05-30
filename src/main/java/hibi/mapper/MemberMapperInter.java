@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 
 import hibi.dto.MemberDto;
+import hibi.dto.ProductDto;
 
 @Mapper
 public interface MemberMapperInter {

@@ -65,11 +65,11 @@ public class ProductService implements ProductServiceInter {
 	}
 
 	@Override
-	public String getFirstImage(Long productIdx) {
+	public String getFirstPhoto(Long productIdx) {
 		// TODO Auto-generated method stub
-		String photos[] = productMapper.getFirstImage(productIdx).split(",");
-		String firstphoto = photos[0];
-		return firstphoto;
+		String photos[] = productMapper.getFirstPhoto(productIdx).split(",");
+		String firstPhoto = photos[0];
+		return firstPhoto;
 	}
 	
 	

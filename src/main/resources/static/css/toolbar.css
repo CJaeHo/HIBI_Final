@@ -1,0 +1,28 @@
+
+	div.menu_toolbar{
+		position: fixed;
+		bottom: 30px;
+		right: 30px;
+		z-index: 9999;
+		text-align: right;
+		font-size: 0;
+		line-height: 0;
+	}
+	.toolbar_write_btn{
+		display: inline-block;
+		width: 40px;
+		height: 40px;
+		padding: 0 15px 0 0;
+		border-radius: 50px;
+		box-sizing: border-box;
+		box-shadow: 0 0 0 1px rgb(0 0 0 / 10%), 0 2px 5px rgb(0 0 0 / 10%);
+		background-color: #fff;
+		font-size: 0;
+		line-height: 0;
+		font-family: Noto Sans DemiLight,AppleSDGothicNeo-Regular,'Malgun Gothic','맑은 고딕',dotum,'돋움',sans-serif;
+	}
+	.toolbar_write_btn svg{
+		position: relative;
+		top: 10px;
+		left: 6px;
+	}

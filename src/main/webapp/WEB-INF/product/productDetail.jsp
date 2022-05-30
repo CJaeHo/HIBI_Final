@@ -19,13 +19,46 @@
 			
 		});
 	}); */
+
+	function list(){
+			var productIdx='${dto.productIdx}';
+			var login = '${sessionScope.loginok}';
+			var loginid = '${sessionScope.loginid}';
+
+			$.ajax({
+				type:'get',
+				dataType:'json',
+				url:'../comment/list',
+				data:{'productIdx':productIdx},
+				success:function(data){
+					var s = "";
+					$.each(data.alist, function(i,d){
+						// s += '<li class="pd_user_post">';
+						// s += '<img alt="" src="'+d.firstPhoto+'">';
+						// s += '<div>';
+						// s += '<span>';
+						// s += d.productTitle;
+						// s += '</span>';
+						// s += '<span>';
+						// s += d.productStatus;
+						// s += '</span>';
+						// s += '</div>';
+						// s += '</li>'; //모달폼;;;;
+					});
+
+					$(".pd_modal_user_post").html(s);
+					
+				}
+
+			});
+		}
+    
 </script>
 </head>
 <body>
 	<div class="body-wrap">
 		<div class="body"><!-- margin, flex:column, justify... -->
 			<div class="post-comment-wrap"><!-- flex,  -->
-			
 				<!-- 게시물 -->
 				<article class="post">
 					<section id="article-images"><!-- margin, width, position -->
@@ -148,7 +181,7 @@
 									</div>
 								</a>
 								<div class="comment-time-buttons"><!-- flex, column -->
-									<p></p><!-- flex, 오른쪽 정렬 -->
+									<!-- flex, 오른쪽 정렬 -->
 									<button type="button" class="btn btn-info trade"><!-- submit으로? -->
 										거래하기
 									</button>
@@ -171,14 +204,22 @@
 							</a>
 						</div>
 					</div>
-					<div class="buttons-wrap">
-						<button type="button" class="btn btn-success" style="width:100px;" onclick="location.href='updateform?productIdx=${dto.productIdx}&currentPage=${currentPage}'">수정하기</button>
-						<button type="button" class="btn btn-success" style="width:100px;" onclick="location.href='form'">글쓰기</button>
-						<button type="button" class="btn btn-danger" style="width:100px;" onclick="location.href='delete?productIdx=${dto.productIdx}&currentPage=${currentPage}'">삭제하기</button>
-					</div>
 				</div>
 			</div>
+			<c:if test="${sessionScope.loginok == null}">
+				<script>
+						$(".btn-open-popup").click(function(){
+								alert("로그인 후 댓글을 작성해주세요!");
+								location.href='../login';
+						})
+				</script>
+			</c:if>
 			<!-- 다른 게시물 -->
+			<div class="buttons-wrap">
+				<button type="button" class="btn btn-success" style="width:100px;" onclick="location.href='updateform?productIdx=${dto.productIdx}&currentPage=${currentPage}'">수정하기</button>
+				<button type="button" class="btn btn-success" style="width:100px;" onclick="location.href='form'">글쓰기</button>
+				<button type="button" class="btn btn-danger" style="width:100px;" onclick="location.href='delete?productIdx=${dto.productIdx}&currentPage=${currentPage}'">삭제하기</button>
+			</div>
 			<section id="article-detail-hot-more">
 				<div id="hot-more-link">더 구경하기</div>
 			</section>
@@ -199,18 +240,20 @@
 		      	<form class="pd_modal_form"><!-- flex, column, , padding 10px auto,  -->
 		      		<ul class="pd_modal_user_post"><!-- flex, row, wrap, between-space -->
 						<!-- width:107, height:107px-->
-		      			<!-- <li class="pd_user_post">
-							<img alt="" src="/image/test.jpg">
-							<div>
-								<span>물건명</span>
-								<span>상태</span>
-							</div>
-						</li> -->
+						<c:forEach var="udto" items="${plist}">
+							<li class="pd_user_post">
+								<img src="../save/${udto.firstPhoto}" alt="">
+								<div>
+									<span>${udto.productTitle}</span>
+									<span>${udto.productStatus}</span>
+								</div>
+							</li>
+						</c:forEach>
 		      		</ul>
 		      		<!-- <textarea>
 		      		</textarea> -->
 		      		<div class="pd_select_btn_wrap">
-		      			<button type="submit" style="width:100px; height:40px; background-color:rgb(255, 255, 137);">
+		      			<button type="button" class="asave" style="width:100px; height:40px; background-color:rgb(255, 255, 137);">
 		      				댓글 달기
 		      			</button>
 		      			<button type="button" class="btn btn-danger cancelbtn" style="width:100px; height:40px;">취소</button>
@@ -255,9 +298,8 @@
 			}
 		});  /**/
       
-
-      
-     
+		
+    
     </script>
 </body>
 </html>

@@ -24,12 +24,12 @@
 </head>
 
 <body>
-	<%-- <c:if test="${sessionScope.loginok==null}">
+	<c:if test="${sessionScope.loginok==null}">
 		<script type="text/javascript">
 			alert("로그인을 해주세요.");
 			location.href="../../login";
 		</script>
-	</c:if> --%>
+	</c:if>
 	<div class="pf-body-wrap">
 		<form action="insert" method="post" enctype="multipart/form-data" onsubmit="return check()">
 			<input type="hidden" name="userIdx" value="${userIdx}">

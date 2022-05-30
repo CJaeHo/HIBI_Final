@@ -12,10 +12,13 @@
     height: 100%;
     align-items: center;
     flex-direction: column;
+	width:980px;
 }
 .post-comment-wrap{
     display: flex;
     margin-top: 30px;
+	width: 100%;
+	justify-content: space-between;
 }
 .post{
 	width: 580px;
@@ -179,6 +182,8 @@
 	display: flex;
 	flex-direction: column;
     justify-content: space-between;
+	width:355px;
+	height: 700px;
 }
 
 /*댓글*/
@@ -186,36 +191,41 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    min-width: 345px;
-    max-width: 345px;
+    min-width: 355px;
+    max-width: 355px;
     /*border: 1px solid #e9ecef; */
     justify-content: space-between;
+    height: 100%;
 }
 /* ul */
 .article-comment-list-ul{
+	display: flex;
+	flex-direction: column;
 	position: relative;
 	margin: 0px;
 	padding: 0px;
-	height: calc(100%-95px);
+	height: 605px;
 	list-style: none;
 	overflow:hidden auto;
+	width: 355px;
 }
 .article-comment ul li.article-comment-list{
 	display: flex;
 	/* height: 79px; */
-	/*width: 335px;*/
+	width: 345px;
+	margin: 10px auto;
 	justify-content: space-between;
 	padding: 15px;
 	border-radius:10px;
 	/* border:1px solid #e9ecef;  */
-	box-shadow: 0 1px 1px 2px #e9ecef;
+	box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
 }
 li.article-comment-list .comment-anchor{
 	display: flex;
 	text-decoration: none;
 	cursor: pointer;
 	height: 79px;
-	
+	width: 233;
 }
 .comment-anchor .comment-product-image-wrap{
 	width: 79px;
@@ -232,6 +242,7 @@ li.article-comment-list .comment-anchor{
 	flex-direction: column;
 	height: 79px;
 	margin-left: 8px;
+	width: 100%;
 }
 .comment-preview .preview-title{/****************/
     font-size: 14px;
@@ -264,6 +275,7 @@ li.article-comment-list .comment-anchor{
 	flex-direction: column;
 	align-items: flex-end;
 	margin: 4px;
+	justify-content: space-between;
 }
 .comment-time-buttons p{
 	font-size: 13px;
@@ -307,7 +319,7 @@ li.article-comment-list .comment-anchor{
 	text-decoration: none;
 }
 
-/*占쌕몌옙 占쌉시뱄옙*/
+/*밑에 게시물들*/
 #article-detail-hot-more{
     width: 677px;
     margin: 0 auto;
@@ -333,6 +345,7 @@ li.article-comment-list .comment-anchor{
     display: none;
 
     background-color: rgba(0, 0, 0, 0.4);
+	z-index: 11;
 }
 
 .pd_modal.show {
@@ -347,7 +360,7 @@ li.article-comment-list .comment-anchor{
   width: 550px;
   height: 600px;
 
-  padding: 40px;
+  padding: 30px;
 
   text-align: center;
 
@@ -373,7 +386,7 @@ li.article-comment-list .comment-anchor{
 	justify-content:space-between;
 	list-style:none;
 	width: 470px;
-	height: 300px;
+	height: 470px;
 }
 .pd_user_post{
 	cursor:pointer;
@@ -382,7 +395,6 @@ li.article-comment-list .comment-anchor{
 .pd_modal_user_post .pd_user_post div{
 	display: flex;
 	flex-direction: column;
-	
 	position: relative;
 	bottom:28px;
 	background-color: rgba( 255, 255, 255, 0.5 );

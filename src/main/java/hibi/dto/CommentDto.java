@@ -16,7 +16,7 @@ public class CommentDto {
 	private int likeCount;
 	private int productIdx;
 	private int userIdx;
-	private int imageIdx;
+	private int firstPhoto;
 
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone="Asia/seoul")
 	private Timestamp createAt;

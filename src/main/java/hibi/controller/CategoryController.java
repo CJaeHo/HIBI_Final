@@ -72,8 +72,8 @@ public class CategoryController {
             dto.setAccount(account);
             
             //대표사진
-            String firstImage = service.getFirstImage(dto.getProductIdx());
-            dto.setFirstImage(firstImage);
+            String firstPhoto = service.getFirstPhoto(dto.getProductIdx());
+            dto.setFirstPhoto(firstPhoto);
 		}
 		
 		mview.addObject("currentPage",currentPage);

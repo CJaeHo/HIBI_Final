@@ -20,8 +20,11 @@
 	}
 
 	.logo img{
-		width: 170px;
-		height: 62px;
+		width: 50px;
+	}
+	.logo #hibi-logo{
+		margin-top: 25px;
+		margin-right: 80px;
 	}
 	
 	.searchArea{
@@ -88,7 +91,7 @@
 	<div class="title">
 		<div class="header">
 			<a href="/" class="logo">
-				<img src="/image/logo.png">	
+				<img id="hibi-logo" src="/image/hibi-logo.png">	
 			</a>
 			<div class="searchArea">
 				<form>

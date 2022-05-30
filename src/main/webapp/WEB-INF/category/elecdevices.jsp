@@ -20,7 +20,7 @@
    			<div class="category-content"> 		
 	   			<div class="catcontent">
 		   			<a href="../product/detail?productIdx=${dto.productIdx}&currentPage=${currentPage}">
-		   				<img class="cimg" src="../save/${dto.firstImage}"><br>
+		   				<img class="cimg" src="../save/${dto.firstPhoto}"><br>
 		   				<b class="content_title">${dto.productTitle}</b><br>
 		   				<span class="content_read">조회수 ${dto.productLookupCount} 댓글수 ${dto.account}</span>
 		   			</a>

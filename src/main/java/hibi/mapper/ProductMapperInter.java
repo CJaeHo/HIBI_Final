@@ -29,7 +29,10 @@ public interface ProductMapperInter {
 	
 	public void updateLookupCount(Long productIdx);
 	
-	public String getFirstImage(Long productIdx);
+	public String getFirstPhoto(Long productIdx);
 
 	public String getCategoryName(Long categoryIdx);
+
+	//유저 게시물 가져오기
+	public List<ProductDto> getUserProduct(String loginId);
 }
