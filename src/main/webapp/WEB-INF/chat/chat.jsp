@@ -9,7 +9,7 @@
 
 <link rel="stylesheet" type="text/css" href="/css/chat_style.css">
 
-<%--스윗잭--%>
+<%--스윗잭2222222--%>
 <div class="inner">
     <div id="container" class="container">
         <input type="hidden" id="chatHistory" value="${chatHistory}">
