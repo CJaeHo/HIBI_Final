@@ -45,18 +45,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- 판매완료+ 후기작성에 해당하면, 후기작성버튼 -->
-                <c:if test="${dto.sellstatus=='판매완료' && checkReviewee != 0 && checkWrite == 0}">
-                    <div class="back">
-                        <button type="button" class="btn-default" id="reviewBtn">후기 작성</button>
-                    </div>
-                </c:if>
-                <!-- 후기작성에 해당하지만, 후기가 있으면 -->
-                <c:if test="${dto.sellstatus=='판매완료' && checkWrite != 0 }">
-                    <div class="back">
-                        <button type="button" class="btn-default">후기 완료</button>
-                    </div>
-                </c:if>
             </div>
         </div>
 
